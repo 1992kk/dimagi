@@ -119,30 +119,7 @@ class tunnel():
         GIT rollback to a previously working version
         """
 
-        if not opts.branch:
-            BRANCH = 'master'
-        else:
-            BRANCH = opts.branch
-
-        # check if the directory exists
-        dir_present = link.ssh_command('test -d /home/devops/todo ; echo $?')
-        if '0' not in dir_present[0][0].encode('ascii', 'ignore'):
-            print "/home/devops/todo does not exist"
-
-        # Get in the directory and git pull.
-        pull = link.ssh_command('cd /home/devops/todo ; git fetch ')
-        if debug:
-            print pull
-
-        # Checkout Branch
-        checkout_call = "cd /home/devops/todo ; git checkout {0}".format(BRANCH)
-        checkout = link.ssh_command(checkout_call)
-        if debug:
-            print checkout
-
-        #Pull
-        pull = link.ssh_command("cd /home/devops/todo ; git pull")
-        print pull
+ 
 
 
 
